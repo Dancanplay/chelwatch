@@ -1,0 +1,11 @@
+<p>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span id="title" [routerLink]="['/']">{{title}}</span>
+      <span class="spacer"></span>
+      <button mat-icon-button aria-label="Share" matTooltip="Copy link to clipboard" [matTooltipPosition]="'left'" (click)="shareClick($event)">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</p>

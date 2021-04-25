@@ -1,0 +1,30 @@
+<mat-form-field style="margin: 20px" appearance="fill">
+  <mat-label>Choose a date</mat-label>
+  <input matInput [attr.disabled]="true" [min]="minDate" [max]="maxDate" [matDatepicker]="$any(picker)" [formControl]="datepicker" (dateChange)="onDateChange($event)">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker disabled="false"></mat-datepicker>
+</mat-form-field>
+
+<div *ngIf="matches.length">
+  <ul class="lists">
+    <li *ngFor="let match of matches">
+      <mat-card class="match-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{match.awayTeam}} @ {{match.homeTeam}}</mat-card-title>
+          <mat-card-subtitle>{{match.gameDate.toLocaleString()}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>Current game status: {{match.status}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <ul class="lists">
+            <li *ngFor="let feed of match.feeds">
+              <button mat-raised-button color="primary" [routerLink]="['/stream']" [queryParams]="{ date: match.gameDate.toISOString(), feed: feed.feedId }" >{{feed.feedName}}</button>
+            </li>
+          </ul>
+        </mat-card-actions>
+      </mat-card>
+    </li>
+  </ul>
+</div>
