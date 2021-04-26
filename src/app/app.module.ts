@@ -17,6 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing.module';
 import {MatNativeDateModule} from '@angular/material/core';
+import {VimeModule} from '@vime/angular';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatInputModule,
     MatNativeDateModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    VimeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

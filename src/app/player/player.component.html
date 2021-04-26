@@ -1,1 +1,15 @@
-<video id="video" controls autoplay></video>
+<div id="video" class="player" *ngIf="!brokenStream; else brokenstream">
+  <vm-player autoplay>
+    <vm-hls version="latest" [config]="hlsConfig">
+      <source data-src="{{streamURL}}" type="application/x-mpegURL">
+    </vm-hls>
+    <vm-default-ui></vm-default-ui>
+  </vm-player>
+</div>
+<ng-template #brokenstream>
+  <div class="brokenstream">
+    <mat-icon color="warn">error</mat-icon>
+    <h1>The stream is not yet available or is broken.</h1>
+    <button mat-stroked-button color="warn" (click)="redirect()">Return to homescreen</button>
+  </div>
+</ng-template>

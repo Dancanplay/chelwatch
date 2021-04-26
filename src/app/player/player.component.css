@@ -1,0 +1,21 @@
+@import '~@vime/core/themes/default.css';
+.player {
+  margin: auto;
+}
+
+#video {
+  height: 720px;
+  width: 1280px;
+}
+
+.mat-icon.mat-warn {
+  font-size: 150px;
+  width: 150px;
+}
+
+.brokenstream {
+  margin: 35px;
+  padding: 300px 0 300px 0;
+  text-align: center;
+  background: rgba(255,0,0,0.2);
+}
