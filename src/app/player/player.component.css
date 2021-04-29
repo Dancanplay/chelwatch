@@ -1,6 +1,6 @@
 @import '~@vime/core/themes/default.css';
 .player {
-  margin: auto;
+  margin: 20px auto auto auto;
 }
 
 #video {
@@ -15,7 +15,7 @@
 
 .brokenstream {
   margin: 35px;
-  padding: 300px 0 300px 0;
+  padding: 300px 0 250px 0;
   text-align: center;
   background: rgba(255,0,0,0.2);
 }
