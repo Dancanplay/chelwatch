@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 export class NhlapiService {
   #cdn = 'akc';
   #M3U_host = 'freegamez.ga';
+  #CORS_proxy = 'https://green-pine-a9e2.deancaners.workers.dev/?';
 
   constructor(private http: HttpClient) { }
   static DateToString(date: Date): string {
@@ -22,7 +23,7 @@ export class NhlapiService {
 
   getM3U(date: Date, feedId: number): Observable<any> {
     const formatted = date.toISOString().slice(0, 10);
-    const apiURL = `https://${this.#M3U_host}:443/getM3U8.php?league=nhl&date=${formatted}&id=${feedId}&cdn=${this.#cdn}`;
+    const apiURL = `${this.#CORS_proxy}https://${this.#M3U_host}/getM3U8.php?league=nhl&date=${formatted}&id=${feedId}&cdn=${this.#cdn}`;
     return this.http.get(apiURL, {responseType: 'text'});
   }
 }

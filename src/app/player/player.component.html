@@ -1,6 +1,6 @@
-<div id="video" class="player" *ngIf="!brokenStream; else brokenstream">
+<div id="video" class="player" *ngIf="streamURL != 'broken'; else brokenstream">
   <vm-player autoplay>
-    <vm-hls version="latest" [config]="hlsConfig" (vmError)="brokenStream = true">
+    <vm-hls version="latest" [config]="hlsConfig" (vmError)="streamURL = 'broken'">
       <source data-src="{{streamURL}}" type="application/x-mpegURL">
     </vm-hls>
     <vm-default-ui></vm-default-ui>
