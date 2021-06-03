@@ -10,34 +10,44 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class PlayerComponent implements OnInit {
   date: Date;
   feedId: number;
-  streamURL: string;
+  streamer: string;
+  broken = false;
+  loading = true;
   hlsConfig = {
     xhrSetup: (xhr, link) => {
       link = link.replace('mf.svc.nhl.com', 'green-pine-a9e2.deancaners.workers.dev/?https://freegamez.ga');
       xhr.open('GET', link, true);
     },
-    autoStartLoad: true
+    autoStartLoad: true,
+    debug: true
   };
+
   constructor(private nhlapiService: NhlapiService, private route: ActivatedRoute, private router: Router) {
     this.route.queryParamMap.subscribe(params => {
       this.date = new Date(params.get('date'));
       this.feedId = parseInt(params.get('feed'), 10);
     });
 
+    this.fetchStream();
+  }
+
+  fetchStream(): void {
     this.nhlapiService.getM3U(this.date, this.feedId).subscribe(url => {
       if (url !== 'Not available yet') {
-        this.streamURL = url;
-      } else {
-        this.streamURL = 'broken';
+        this.streamer = url;
       }
+      this.loading = false;
     });
   }
 
   redirect(): void {
-    this.router.navigate(['/']);
+    if (history.length > 1) {
+      window.history.back();
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit(): void {
-
   }
 }
