@@ -17,9 +17,10 @@ export class MatchesComponent implements OnInit {
   // datepicker stuff
   minDate: Date;
   maxDate: Date;
-  currentDate = new Date();
+  currentDate: Date;
   datepicker: FormControl;
 
+  timeOptions = { dateStyle: 'full', timeStyle: 'long'};
 
   constructor(private router: Router, private route: ActivatedRoute, private nhlapiService: NhlapiService) {
     const now = new Date().getFullYear();
@@ -31,6 +32,7 @@ export class MatchesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       if (isNaN(Date.parse(params.get('date')))) {
         this.currentDate = new Date();
+        this.currentDate = new Date(this.currentDate.toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}));
       } else {
         this.currentDate = new Date(params.get('date'));
       }
