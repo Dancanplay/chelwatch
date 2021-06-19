@@ -19,8 +19,8 @@
         </mat-card-content>
         <mat-card-actions>
           <ul class="lists">
-            <li *ngFor="let feed of match.feeds">
-              <button mat-raised-button color="primary" [routerLink]="['/stream']" [queryParams]="{ date: match.gameDate.toISOString(), feed: feed.feedId }" >{{feed.feedName}}</button>
+            <li class="feed-btn" *ngFor="let feed of match.feeds">
+              <button mat-raised-button color="primary" [routerLink]="['/stream']" [queryParams]="{ date: match.gameDate.toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}), feed: feed.feedId }" >{{feed.feedName}}</button>
             </li>
           </ul>
         </mat-card-actions>
@@ -28,3 +28,10 @@
     </li>
   </ul>
 </div>
+
+<div *ngIf="noMatches" class="emptymatches">
+  <mat-icon color="#FFEB3B">warning</mat-icon>
+  <h1>There seem to be no matches scheduled for this day.</h1>
+</div>
+
+

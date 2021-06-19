@@ -11,3 +11,19 @@
   margin: 10px;
   padding: 30px;
 }
+
+.feed-btn {
+  margin: 5px;
+}
+
+.mat-icon {
+  font-size: 150px;
+  width: 150px;
+}
+
+.emptymatches {
+  margin: 35px;
+  padding: 200px 0 200px 0;
+  text-align: center;
+  background: rgb(255,235,39);
+}

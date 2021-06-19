@@ -12,7 +12,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./matches.component.css']
 })
 export class MatchesComponent implements OnInit {
-  matches: Match[] = [];
+  matches: Match[];
+  noMatches = false;
 
   // datepicker stuff
   minDate: Date;
@@ -43,24 +44,29 @@ export class MatchesComponent implements OnInit {
   }
 
   getMatches(): void {
+    this.noMatches = false;
     this.matches = [];
     this.nhlapiService.getMatches(this.currentDate).subscribe(
       data => {
-        for (const game of data.dates[0].games) {
-          const feeds: Feed[] = [];
-          for (const feed of game.content.media.epg[0].items) {
-            feeds.push({
-              feedId: feed.mediaPlaybackId,
-              feedName: feed.mediaFeedType
+        if (data.dates.length) {
+          for (const game of data.dates[0].games) {
+            const feeds: Feed[] = [];
+            for (const feed of game.content.media.epg[0].items) {
+              feeds.push({
+                feedId: feed.mediaPlaybackId,
+                feedName: feed.mediaFeedType
+              });
+            }
+            this.matches.push({
+              homeTeam: game.teams.home.team.name,
+              awayTeam: game.teams.away.team.name,
+              status: game.status.detailedState,
+              gameDate: new Date(game.gameDate),
+              feeds
             });
           }
-          this.matches.push({
-            homeTeam: game.teams.home.team.name,
-            awayTeam: game.teams.away.team.name,
-            status: game.status.detailedState,
-            gameDate: new Date(game.gameDate),
-            feeds
-          });
+        } else {
+          this.noMatches = true;
         }
       },
       ((error: HttpErrorResponse) => console.log(error.message))
