@@ -7,6 +7,7 @@
   </mat-form-field>
 
   <button mat-raised-button class="find-match-btn" color="primary" (click)="onMatchSearchClick($event)">Closest match</button>
+  <mat-spinner *ngIf="loading" diameter="45"></mat-spinner>
 </div>
 
 

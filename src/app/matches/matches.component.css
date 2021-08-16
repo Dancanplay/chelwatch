@@ -31,7 +31,11 @@
 .controls {
   display: flex;
   justify-items: center;
-  margin-top: 10px;
+  margin: 20px;
+}
+
+.controls mat-spinner {
+ margin-left: 10px;
 }
 .find-match-btn {
   height: 52px;
