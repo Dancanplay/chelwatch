@@ -40,7 +40,7 @@ export class MatchesComponent implements OnInit {
       }
     });
     this.datepicker = new FormControl({value: this.currentDate, disabled: true}, Validators.required);
-
+    this.loading = true;
     this.getMatches();
   }
 
@@ -73,7 +73,8 @@ export class MatchesComponent implements OnInit {
           this.noMatches = true;
         }
       },
-      ((error: HttpErrorResponse) => console.log(error.message))
+      ((error: HttpErrorResponse) => console.log(error.message)),
+      (() => this.loading = false)
     );
   }
 
@@ -97,6 +98,7 @@ export class MatchesComponent implements OnInit {
   }
 
   onDateChange(event: MatDatepickerInputEvent<Date>): void {
+    this.loading = true;
     this.currentDate = new Date(event.value);
     this.router.navigateByUrl('/matches/' + NhlapiService.DateToString(this.currentDate));
     this.getMatches();
