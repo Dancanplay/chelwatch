@@ -27,3 +27,13 @@
   text-align: center;
   background: rgb(255,235,39);
 }
+
+.controls {
+  display: flex;
+  justify-items: center;
+  margin-top: 10px;
+}
+.find-match-btn {
+  height: 52px;
+  margin-left: 10px;
+}
