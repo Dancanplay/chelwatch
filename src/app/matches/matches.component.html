@@ -1,12 +1,12 @@
 <div class="controls">
-  <mat-form-field appearance="fill">
+  <mat-form-field class="date-picker" appearance="fill">
     <mat-label>Choose a date</mat-label>
     <input matInput [value]="currentDate" [attr.disabled]="true" [min]="minDate" [max]="maxDate" [matDatepicker]="$any(picker)" [formControl]="datepicker" (dateChange)="onDateChange($event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker disabled="false"></mat-datepicker>
   </mat-form-field>
 
-  <button mat-raised-button class="find-match-btn" color="primary" (click)="onMatchSearchClick($event)">Closest match</button>
+  <button mat-flat-button class="find-match-btn" color="primary" (click)="onMatchSearchClick($event)">Closest match</button>
   <mat-spinner *ngIf="loading" diameter="45"></mat-spinner>
 </div>
 
@@ -17,7 +17,6 @@
     <li *ngFor="let match of matches">
       <mat-card class="match-card">
         <mat-card-header>
-          <div mat-card-avatar class="example-header-image"></div>
           <mat-card-title>{{match.awayTeam}} @ {{match.homeTeam}}</mat-card-title>
           <mat-card-subtitle>{{match.gameDate.toLocaleString(undefined, timeOptions)}}</mat-card-subtitle>
         </mat-card-header>
