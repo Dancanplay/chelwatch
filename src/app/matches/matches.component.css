@@ -6,18 +6,19 @@
   list-style-type: none;
   padding: 0;
   margin: 35px;
-  flex: 1;
 }
 
-.lists>li{
-  width: calc(25%-30px);/*30px to account for the gaps 25% = 4 items per row*/
+.lists > li{
+  align-self: stretch;
+  /*width: calc(25% - 9px);/*30px to account for the gaps 25% = 4 items per row*/
+  min-width: calc(25% - 9px);
 }
 
 .match-card {
   background-color: #F1F1F1;
 }
 
-.match-card>p{
+.match-card > p{
   padding-left: 16px;
 }
 
@@ -46,22 +47,16 @@
 .controls {
   display: flex;
   justify-items: center;
-<<<<<<< Updated upstream
-  margin-top: 10px;
-=======
   margin: 35px;
 }
 
 .controls mat-spinner {
   margin-left: 10px;
->>>>>>> Stashed changes
 }
 
 .find-match-btn {
   height: 52px;
   margin-left: 10px;
-<<<<<<< Updated upstream
-=======
 }
 
  
@@ -91,7 +86,7 @@ mat-datepicker-toggle {
   color: white !important;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1000px) {
   .lists {
     display: flex;
     flex-wrap: wrap;
@@ -102,8 +97,7 @@ mat-datepicker-toggle {
     margin: 35px;
     flex: 1;
   }
-  .lists>li{
+  .lists > li{
     width: 100%;/*30px to account for the gaps 25% = 4 items per row*/
   }
->>>>>>> Stashed changes
 }
