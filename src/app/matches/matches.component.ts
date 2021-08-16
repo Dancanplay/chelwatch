@@ -51,7 +51,7 @@ export class MatchesComponent implements OnInit {
         if (data.dates.length) {
           for (const game of data.dates[0].games) {
             const feeds: Feed[] = [];
-            if(game.content.media){
+            if (game.content.media) {
               for (const feed of game.content.media.epg[0].items) {
                 feeds.push({
                   feedId: feed.mediaPlaybackId,
