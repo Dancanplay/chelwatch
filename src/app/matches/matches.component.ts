@@ -51,11 +51,13 @@ export class MatchesComponent implements OnInit {
         if (data.dates.length) {
           for (const game of data.dates[0].games) {
             const feeds: Feed[] = [];
-            for (const feed of game.content.media.epg[0].items) {
-              feeds.push({
-                feedId: feed.mediaPlaybackId,
-                feedName: feed.mediaFeedType
-              });
+            if (game.content.media) {
+              for (const feed of game.content.media.epg[0].items) {
+                feeds.push({
+                  feedId: feed.mediaPlaybackId,
+                  feedName: feed.mediaFeedType
+                });
+              }
             }
             this.matches.push({
               homeTeam: game.teams.home.team.name,
