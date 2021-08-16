@@ -79,8 +79,7 @@ export class MatchesComponent implements OnInit {
         data => {
           if(data.dates.length) {
             let [year, month, date] = data.dates[0].date.split('-')
-            console.log('here', year, month, date)
-            return resolve(new Date(year, month, date))
+            return resolve(new Date(year, month - 1, date))
           }
           return resolve(new Date())
         },
