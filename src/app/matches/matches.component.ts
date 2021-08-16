@@ -14,6 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class MatchesComponent implements OnInit {
   matches: Match[];
   noMatches = false;
+  loading = false;
 
   // datepicker stuff
   minDate: Date;
@@ -59,7 +60,7 @@ export class MatchesComponent implements OnInit {
                 });
               }
             }
-            
+
             this.matches.push({
               homeTeam: game.teams.home.team.name,
               awayTeam: game.teams.away.team.name,
@@ -78,6 +79,7 @@ export class MatchesComponent implements OnInit {
 
   findClosestMatchDate(): Promise<Date> {
     return new Promise((resolve, reject) => {
+      this.loading = true
       this.nhlapiService.getCloseMatches().subscribe(
         data => {
           if(data.dates.length) {
@@ -92,7 +94,6 @@ export class MatchesComponent implements OnInit {
         })
       );
     })
-    
   }
 
   onDateChange(event: MatDatepickerInputEvent<Date>): void {
@@ -103,6 +104,7 @@ export class MatchesComponent implements OnInit {
 
   async onMatchSearchClick(event: MouseEvent): Promise<void> {
     this.currentDate = await this.findClosestMatchDate()
+    this.loading = false;
     this.router.navigateByUrl('/matches/' + NhlapiService.DateToString(this.currentDate));
     this.getMatches()
   }
