@@ -59,6 +59,7 @@ export class MatchesComponent implements OnInit {
                 });
               }
             }
+            
             this.matches.push({
               homeTeam: game.teams.home.team.name,
               awayTeam: game.teams.away.team.name,
@@ -75,9 +76,34 @@ export class MatchesComponent implements OnInit {
     );
   }
 
+  findClosestMatchDate(): Promise<Date> {
+    return new Promise((resolve, reject) => {
+      this.nhlapiService.getCloseMatches().subscribe(
+        data => {
+          if(data.dates.length) {
+            let [year, month, date] = data.dates[0].date.split('-')
+            return resolve(new Date(year, month - 1, date))
+          }
+          return resolve(new Date())
+        },
+        ((error: HttpErrorResponse) => {
+          console.log(error.message)
+          reject(error.message)
+        })
+      );
+    })
+    
+  }
+
   onDateChange(event: MatDatepickerInputEvent<Date>): void {
     this.currentDate = new Date(event.value);
     this.router.navigateByUrl('/matches/' + NhlapiService.DateToString(this.currentDate));
     this.getMatches();
+  }
+
+  async onMatchSearchClick(event: MouseEvent): Promise<void> {
+    this.currentDate = await this.findClosestMatchDate()
+    this.router.navigateByUrl('/matches/' + NhlapiService.DateToString(this.currentDate));
+    this.getMatches()
   }
 }

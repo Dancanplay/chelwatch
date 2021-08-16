@@ -26,4 +26,10 @@ export class NhlapiService {
     const apiURL = `${this.#CORS_proxy}https://${this.#M3U_host}/getM3U8.php?league=nhl&date=${formatted}&id=${feedId}&cdn=${this.#cdn}`;
     return this.http.get(apiURL, {responseType: 'text'});
   }
+  getCloseMatches(): Observable<any> {
+    const start = NhlapiService.DateToString(new Date());
+    const end = NhlapiService.DateToString(new Date(Date.now() + 7.8e10));// 3 months from now
+    const apiURL = `https://statsapi.web.nhl.com/api/v1/schedule?startDate=${start}&endDate=${end}&expand=schedule.teams,schedule.game.content.media.epg`;
+    return this.http.get(apiURL);
+  }
 }
