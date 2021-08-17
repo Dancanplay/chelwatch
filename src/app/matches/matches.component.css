@@ -104,4 +104,16 @@ mat-datepicker-toggle {
   .lists > li{
     width: 100%;/*30px to account for the gaps 25% = 4 items per row*/
   }
+
+  .match-card {
+    min-width: unset;
+  }
+
+  .date-picker {
+    width: 150px;
+  }
+
+  #feed-buttons {
+    flex-wrap: wrap;
+  }
 }
