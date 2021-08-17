@@ -24,7 +24,7 @@
           <p>Current game status: {{match.status}}</p>
         </mat-card-content>
         <mat-card-actions>
-          <ul class="lists">
+          <ul id="feed-buttons">
             <li class="feed-btn" *ngFor="let feed of match.feeds">
               <button mat-raised-button color="primary" [routerLink]="['/stream']" [queryParams]="{ date: match.gameDate.toLocaleString('en-US', {timeZone: 'America/Los_Angeles'}), feed: feed.feedId }" >{{feed.feedName}}</button>
             </li>

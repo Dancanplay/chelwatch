@@ -4,17 +4,13 @@
   justify-content: center;
   gap: 10px;
   list-style-type: none;
-  padding: 0;
-  margin: 35px;
-}
-
-.lists > li{
-  align-self: stretch;
-  /*width: calc(25% - 9px);/*30px to account for the gaps 25% = 4 items per row*/
-  min-width: calc(25% - 9px);
+  margin: 45px;
+  padding: 0 0 100px;
 }
 
 .match-card {
+  min-width: 500px;
+  min-height: 150px;
   background-color: #F1F1F1;
 }
 
@@ -25,6 +21,12 @@
 ::ng-deep.mat-card-content {
   /*change color of underline when focused*/
   padding-left: 16px;
+}
+
+#feed-buttons {
+  display: inline-flex;
+  list-style-type: none;
+  padding-left: 4%;
 }
 
 .feed-btn {
@@ -83,7 +85,7 @@
   /*change color of label*/
   color: white !important;
 }
- 
+
 mat-datepicker-toggle {
   color: white !important;
 }
