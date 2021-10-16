@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NhlapiService} from '../nhlapi.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ViewChild } from '@angular/core';
+import { Player } from '@vime/angular';
 
 @Component({
   selector: 'app-player',
@@ -8,6 +10,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./player.component.css']
 })
 export class PlayerComponent implements OnInit {
+  @ViewChild('player') player!: Player;
+
   date: Date;
   feedId: number;
   streamer: string;

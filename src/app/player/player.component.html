@@ -1,5 +1,5 @@
 <div id="video" class="player" *ngIf="streamer; else brokenStream">
-  <vm-player autoplay>
+  <vm-player #player autoplay>
     <vm-hls version="latest" [config]="hlsConfig" (vmError)="streamer = undefined">
       <source data-src="{{streamer}}" type="application/x-mpegURL">
     </vm-hls>
