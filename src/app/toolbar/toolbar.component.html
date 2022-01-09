@@ -2,6 +2,9 @@
   <mat-toolbar-row>
     <h1 id="title" [routerLink]="['/']">{{title}}</h1>
     <span class="spacer"></span>
+    <button mat-icon-button (click)="settingsDialog();">
+      <mat-icon>settings</mat-icon>
+    </button>
     <button mat-icon-button [matTooltip]="text" matTooltipPosition="left" (click)="shareClick();">
       <mat-icon>share</mat-icon>
     </button>

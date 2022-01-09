@@ -20,7 +20,7 @@
           <mat-card-title>{{match.awayTeam}} @ {{match.homeTeam}}</mat-card-title>
           <mat-card-subtitle>{{match.gameDate.toLocaleString(undefined, timeOptions)}}</mat-card-subtitle>
         </mat-card-header>
-        <mat-card-content>
+        <mat-card-content id="matchstatus">
           <p>Current game status: {{match.status}}</p>
         </mat-card-content>
         <mat-card-actions>

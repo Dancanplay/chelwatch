@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Settings</h1>
+<div mat-dialog-content>
+  <p>Here are the settings for this application.</p>
+  <div style="display: flex; flex-direction: column;">
+    <mat-form-field>
+      <mat-label>Proxy host</mat-label>
+      <input matInput [(ngModel)]="data.proxy">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>M3U8 host</mat-label>
+      <input matInput [(ngModel)]="data.m3u8_target">
+    </mat-form-field>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
+</div>
