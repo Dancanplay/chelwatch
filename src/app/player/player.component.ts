@@ -19,7 +19,8 @@ export class PlayerComponent implements OnInit {
   loading = true;
   hlsConfig = {
     xhrSetup: (xhr, link) => {
-      link = link.replace('mf.svc.nhl.com', 'green-pine-a9e2.deancaners.workers.dev/?https://freegamez.ga');
+      let proxy = localStorage.getItem('proxy'); let m3u8 = localStorage.getItem('m3u8_target');
+      link = link.replace('mf.svc.nhl.com', `${proxy}/?https://${m3u8}`);
       xhr.open('GET', link, true);
     },
     autoStartLoad: true,
