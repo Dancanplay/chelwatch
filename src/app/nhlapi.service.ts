@@ -26,7 +26,7 @@ export class NhlapiService {
 
   getM3U(date: Date, feedId: number): Observable<any> {
     const formatted = date.toISOString().slice(0, 10);
-    const apiURL = `https://${this.#CORS_proxy}/https://${this.#M3U_host}/getM3U8.php?league=nhl&date=${formatted}&id=${feedId}&cdn=${this.#cdn}`;
+    const apiURL = `https://${this.#CORS_proxy}/?http://${this.#M3U_host}/getM3U8.php?league=nhl&date=${formatted}&id=${feedId}&cdn=${this.#cdn}`;
     return this.http.get(apiURL, {responseType: 'text'});
   }
   getCloseMatches(): Observable<any> {
